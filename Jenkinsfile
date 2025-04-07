@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the project'
-                // Add your build steps here
+                echo ' Building the project'
+                bat 'dotnet build'
             }
         }
-        
+
         stage('Test') {
             steps {
-                echo 'Running tests'
-                // Add your test steps here
+                echo 'Running Selenium UI Tests (browser will open)'
+                bat 'dotnet test --no-build --logger:trx'
             }
         }
-        
+
         stage('Deploy') {
             steps {
-                echo 'Deploying the project'
-                // Add your deploy steps here
+                echo ' Deploy stage (optional)'
+                // Add deploy steps here if needed
             }
         }
     }
